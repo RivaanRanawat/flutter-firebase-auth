@@ -23,7 +23,8 @@ class HomeScreen extends StatelessWidget {
           // uid is always available for every sign in method
           Text(user.uid),
           // display the button only when the user email is not verified
-          if (!user.emailVerified)
+          // or isnt an anonymous user
+          if (!user.emailVerified && !user.isAnonymous)
             CustomButton(
               onTap: () {
                 context
@@ -37,6 +38,12 @@ class HomeScreen extends StatelessWidget {
               context.read<FirebaseAuthMethods>().signOut(context);
             },
             text: 'Sign Out',
+          ),
+          CustomButton(
+            onTap: () {
+              context.read<FirebaseAuthMethods>().deleteAccount(context);
+            },
+            text: 'Delete Account',
           ),
         ],
       ),
