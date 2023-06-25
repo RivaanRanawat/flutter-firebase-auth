@@ -18,7 +18,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   if (kIsWeb) {
-    FacebookAuth.i.webInitialize(
+    FacebookAuth.i.webAndDesktopInitialize(
       appId: "1129634001214960", // Replace with your app id
       cookie: true,
       xfbml: true,
